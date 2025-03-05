@@ -1,0 +1,141 @@
+/* Variables */
+:root {
+    --color-alpha: #00a19b;
+    --color-beta: #bb1654;
+    --color-gamma: #006ba6;
+    --color-delta: #e6661f;
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Parallax Container */
+.home-mast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Ensures vertical stacking */
+}
+
+.home-mast__container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures wrapping instead of forcing items in one line */
+    height: 100vh;
+    width: 100%;
+}
+
+.home-mast__container > div {
+    position: relative;
+    flex-grow: 1;
+    transition: flex-grow 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.home-mast__container > div:hover {
+    flex-grow: 3;
+}
+.story-description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh; /* Makes sure there's enough space below */
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: relative; /* Ensure it's placed naturally below */
+    clear: both; /* Helps push it below floated or flex elements */
+}
+
+/* Background Images */
+.absolute-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hover Overlays */
+.home-mast__container > div:nth-child(1):hover::after {
+    background-color: var(--color-alpha);
+}
+.home-mast__container > div:nth-child(2):hover::after {
+    background-color: var(--color-beta);
+}
+.home-mast__container > div:nth-child(3):hover::after {
+    background-color: var(--color-gamma);
+}
+.home-mast__container > div:nth-child(4):hover::after {
+    background-color: var(--color-delta);
+}
+
+.home-mast__container > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.home-mast__container > div:hover::after {
+    opacity: 0.65;
+    transition-delay: 0.6s;
+}
+
+/* Text Animation */
+.text-box {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.text-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.story-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh; /* Ensures enough space below */
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 100%;
+}
+
+/* Ensure the text box is centered */
+.text-box {
+    max-width: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Make text visible when scrolled into view */
+.text-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
